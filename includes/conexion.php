@@ -2,8 +2,8 @@
 // Datos de conexión a la base de datos
 $host = 'localhost';      // Servidor de la base de datos
 $db   = 'almidonadas';    // Nombre de la base de datos
-$user = 'root';           // Usuario de MySQL (por defecto es 'root' en XAMPP)
-$pass = '';               // Contraseña de MySQL (por defecto está vacía en XAMPP)
+$user = 'root';           // Usuario de MySQL
+$pass = '';               // Contraseña de MySQL
 
 try {
     // Crear una instancia de PDO para la conexión
@@ -15,6 +15,7 @@ try {
     // Configurar el juego de caracteres a UTF-8
     $conn->exec("SET NAMES 'utf8'");
     
+    // echo "Conexión a la base de datos exitosa."; // Mensaje de depuración
 } catch (PDOException $e) {
     // En caso de error, mostrar un mensaje
     die("Error de conexión: " . $e->getMessage());

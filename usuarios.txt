@@ -1,0 +1,5 @@
+admin@almidonadas.com
+password123
+
+cliente1@example.com
+password123

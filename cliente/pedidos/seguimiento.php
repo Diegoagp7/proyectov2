@@ -1,7 +1,6 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAuthenticated(); // Redirigir si no está autenticado
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Obtener los pedidos del cliente
 $usuario_id = $_SESSION['user_id'];
@@ -19,7 +18,6 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
-    <?php include '../../templates/header.php'; ?>
     <div class="container">
         <h1>Seguimiento de Pedidos</h1>
         <table>
@@ -45,7 +43,5 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
     </div>
-    <?php include '../../templates/footer.php'; ?>
-    <?php include '../../templates/whatsapp.php'; ?> <!-- Icono de WhatsApp -->
 </body>
 </html>

@@ -166,3 +166,244 @@ table th {
 .whatsapp-icon img:hover {
   transform: scale(1.1);
 }
+/* Estilos específicos para la página de inicio de sesión y registro */
+.login-page {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #2e2e2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 1rem;
+  background-image: url("../imagenes/ground.jpg"); /* Imagen de fondo opcional */
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box; /* Evita desbordamientos */
+  overflow: hidden; /* Evita el scroll vertical */
+}
+
+.login-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem; /* Reducir el padding */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 1000px; /* Reducir el ancho máximo */
+  width: 90%;
+  max-height: 90vh; /* Limita la altura del contenedor */
+  overflow-y: auto; /* Permite scroll interno si es necesario */
+  text-align: center;
+  backdrop-filter: blur(10px);
+  margin: 0 auto;
+  box-sizing: border-box; /* Evita desbordamientos */
+}
+
+.login-title {
+  font-size: 2rem; /* Reducir el tamaño de la fuente */
+  margin-bottom: 0.5rem; /* Reducir el margen inferior */
+  color: #6c5b7b;
+  font-weight: bold;
+}
+
+.login-subtitle {
+  margin-bottom: 1rem; /* Reducir el margen inferior */
+  color: #666;
+  font-size: 1rem; /* Reducir el tamaño de la fuente */
+}
+
+.login-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem; /* Reducir el espacio entre formularios */
+  box-sizing: border-box; /* Evita desbordamientos */
+}
+
+.login-form-container {
+  flex: 1;
+  background-color: #fff;
+  padding: 1rem; /* Reducir el padding */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Evita desbordamientos */
+}
+
+.login-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.login-form-title {
+  font-size: 1.5rem; /* Reducir el tamaño de la fuente */
+  margin-bottom: 1rem; /* Reducir el margen inferior */
+  color: #2e2e2e;
+  font-weight: 600;
+}
+
+.login-label {
+  display: block;
+  margin: 0.5rem 0 0.25rem; /* Reducir los márgenes */
+  color: #2e2e2e;
+  text-align: left;
+  font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+  font-weight: 500;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.6rem; /* Reducir el padding */
+  margin-bottom: 1rem; /* Reducir el margen inferior */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Evita desbordamientos */
+}
+
+.login-input:focus {
+  border-color: #6c5b7b;
+  box-shadow: 0 0 8px rgba(108, 91, 123, 0.3);
+  outline: none;
+}
+
+.login-button {
+  background-color: #6c5b7b;
+  color: #fff;
+  padding: 0.6rem 1.2rem; /* Reducir el padding */
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #c06c84;
+  transform: translateY(-2px);
+}
+
+.login-info-text {
+  margin-top: 1rem; /* Reducir el margen superior */
+  color: #666;
+  font-size: 0.85rem; /* Reducir el tamaño de la fuente */
+}
+
+.login-link {
+  color: #6c5b7b;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.login-link:hover {
+  color: #c06c84;
+  text-decoration: underline;
+}
+
+.login-error {
+  color: #ff4d4d;
+  margin-bottom: 0.5rem; /* Reducir el margen inferior */
+  font-weight: bold;
+  font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-form-wrapper {
+    flex-direction: column;
+    gap: 1rem; /* Reducir el espacio entre formularios */
+  }
+
+  .login-container {
+    padding: 1rem; /* Reducir el padding */
+    width: 95%;
+  }
+
+  .login-title {
+    font-size: 1.8rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .login-subtitle {
+    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 0.8rem; /* Reducir el padding */
+    width: 100%;
+  }
+
+  .login-form-container {
+    padding: 0.8rem; /* Reducir el padding */
+  }
+
+  .login-form-title {
+    font-size: 1.3rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .login-input {
+    padding: 0.5rem; /* Reducir el padding */
+  }
+
+  .login-button {
+    padding: 0.5rem 1rem; /* Reducir el padding */
+  }
+}
+
+/* Estilos específicos para la lista de navegación del panel de administración */
+.admin-nav {
+  background-color: #6c5b7b; /* Fondo morado */
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espacio entre elementos */
+}
+
+.admin-nav ul li {
+  margin: 0;
+}
+
+.admin-nav ul li a {
+  color: #fff; /* Texto blanco */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+}
+
+.admin-nav ul li a:hover {
+  background-color: #c06c84; /* Fondo rosa al pasar el mouse */
+  transform: translateY(-3px); /* Efecto de elevación */
+}
+
+.admin-nav ul li a.active {
+  background-color: #c06c84; /* Fondo rosa para el enlace activo */
+}
+
+/* Estilos responsivos para la lista de navegación */
+@media (max-width: 768px) {
+  .admin-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .admin-nav ul li a {
+    padding: 10px 15px;
+    text-align: center;
+  }
+}

@@ -1,7 +1,6 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAuthenticated(); // Redirigir si no está autenticado
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Iniciar la sesión del carrito si no existe
 if (!isset($_SESSION['carrito'])) {
@@ -61,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cantidad'])) {
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
-    <?php include '../../templates/header.php'; ?>
     <div class="container">
         <h1>Carrito de Compras</h1>
         <form action="index.php" method="POST">
@@ -97,7 +95,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cantidad'])) {
             <a href="../pedidos/hacer_pedido.php" class="btn">Realizar Pedido</a>
         </form>
     </div>
-    <?php include '../../templates/footer.php'; ?>
-    <?php include '../../templates/whatsapp.php'; ?> <!-- Icono de WhatsApp -->
 </body>
 </html>

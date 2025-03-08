@@ -1,7 +1,7 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAdmin(); // Redirigir si no es administrador
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+// Usar rutas absolutas para incluir los archivos
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Obtener todos los pedidos
 $stmt = $conn->query("SELECT * FROM Pedidos");
@@ -14,10 +14,9 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Pedidos - Almidonadas</title>
-    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="<?php echo $_SERVER['DOCUMENT_ROOT']; ?>/almidonadas1/assets/css/styles.css">
 </head>
 <body>
-    <?php include '../../templates/navbar_admin.php'; ?> <!-- Navbar del administrador -->
     <div class="container">
         <h1>Lista de Pedidos</h1>
         <table>
@@ -47,6 +46,5 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
     </div>
-    <?php include '../../templates/footer.php'; ?> <!-- Footer común -->
 </body>
 </html>

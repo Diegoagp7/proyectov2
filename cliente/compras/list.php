@@ -1,7 +1,6 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAuthenticated(); // Redirigir si no está autenticado
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Obtener los pedidos del cliente
 $usuario_id = $_SESSION['user_id'];

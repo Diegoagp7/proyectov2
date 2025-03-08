@@ -1,15 +1,25 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAdmin(); // Redirigir si no es administrador
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+session_start();
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Obtener el ID del producto a editar
+if (!isset($_GET['id'])) {
+    header('Location: list.php');
+    exit();
+}
+
 $id = $_GET['id'];
 
 // Obtener los datos del producto
 $stmt = $conn->prepare("SELECT * FROM Productos WHERE id = :id");
 $stmt->execute(['id' => $id]);
 $producto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$producto) {
+    header('Location: list.php');
+    exit();
+}
 
 // Procesar el formulario de editar producto
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,20 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoria = $_POST['categoria'];
     $imagen = $_POST['imagen'];
 
-    // Actualizar el producto en la base de datos
-    $stmt = $conn->prepare("UPDATE Productos SET nombre = :nombre, descripcion = :descripcion, precio = :precio, categoria = :categoria, imagen = :imagen WHERE id = :id");
-    $stmt->execute([
-        'nombre' => $nombre,
-        'descripcion' => $descripcion,
-        'precio' => $precio,
-        'categoria' => $categoria,
-        'imagen' => $imagen,
-        'id' => $id
-    ]);
+    try {
+        // Actualizar el producto en la base de datos
+        $stmt = $conn->prepare("UPDATE Productos SET nombre = :nombre, descripcion = :descripcion, precio = :precio, categoria = :categoria, imagen = :imagen WHERE id = :id");
+        $stmt->execute([
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'precio' => $precio,
+            'categoria' => $categoria,
+            'imagen' => $imagen,
+            'id' => $id
+        ]);
 
-    // Redirigir a la lista de productos
-    header('Location: list.php');
-    exit();
+        // Redirigir a la lista de productos
+        header('Location: list.php');
+        exit();
+    } catch (PDOException $e) {
+        echo "Error al editar el producto: " . $e->getMessage();
+    }
 }
 ?>
 
@@ -45,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
-    <?php include '../../templates/header.php'; ?>
     <div class="container">
         <h1>Editar Producto</h1>
         <form action="edit.php?id=<?php echo $id; ?>" method="POST">
@@ -72,6 +85,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn">Guardar Cambios</button>
         </form>
     </div>
-    <?php include '../../templates/footer.php'; ?>
 </body>
 </html>

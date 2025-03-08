@@ -1,7 +1,7 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAdmin(); // Redirigir si no es administrador
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+session_start();
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Procesar el formulario de añadir producto
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,19 +11,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoria = $_POST['categoria'];
     $imagen = $_POST['imagen'];
 
-    // Insertar el producto en la base de datos
-    $stmt = $conn->prepare("INSERT INTO Productos (nombre, descripcion, precio, categoria, imagen) VALUES (:nombre, :descripcion, :precio, :categoria, :imagen)");
-    $stmt->execute([
-        'nombre' => $nombre,
-        'descripcion' => $descripcion,
-        'precio' => $precio,
-        'categoria' => $categoria,
-        'imagen' => $imagen
-    ]);
+    try {
+        // Insertar el producto en la base de datos
+        $stmt = $conn->prepare("INSERT INTO Productos (nombre, descripcion, precio, categoria, imagen) VALUES (:nombre, :descripcion, :precio, :categoria, :imagen)");
+        $stmt->execute([
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'precio' => $precio,
+            'categoria' => $categoria,
+            'imagen' => $imagen
+        ]);
 
-    // Redirigir a la lista de productos
-    header('Location: list.php');
-    exit();
+        // Redirigir a la lista de productos
+        header('Location: list.php');
+        exit();
+    } catch (PDOException $e) {
+        echo "Error al añadir el producto: " . $e->getMessage();
+    }
 }
 ?>
 
@@ -36,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
-    <?php include '../../templates/header.php'; ?>
     <div class="container">
         <h1>Añadir Producto</h1>
         <form action="add.php" method="POST">
@@ -63,6 +66,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn">Añadir Producto</button>
         </form>
     </div>
-    <?php include '../../templates/footer.php'; ?>
 </body>
 </html>

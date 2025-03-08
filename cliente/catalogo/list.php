@@ -1,7 +1,6 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAuthenticated(); // Redirigir si no está autenticado
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Obtener todos los productos
 $stmt = $conn->query("SELECT * FROM Productos");
@@ -17,7 +16,6 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
-    <?php include '../../templates/header.php'; ?>
     <div class="container">
         <h1>Catálogo de Productos</h1>
         <div class="productos-grid">
@@ -32,7 +30,5 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </div>
     </div>
-    <?php include '../../templates/footer.php'; ?>
-    <?php include '../../templates/whatsapp.php'; ?> <!-- Icono de WhatsApp -->
 </body>
 </html>

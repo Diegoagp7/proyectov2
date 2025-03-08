@@ -2,7 +2,8 @@
     <div class="container">
         <a href="/almidonadas/cliente/index.php" class="logo">Almidonadas</a>
         <ul class="nav-links">
-            <li><a href="/almidonadas1/includes/logout.php">Cerrar Sesión</a></li>
+            <li><a href="#">Iniciar sesion</a></li>
+            <li><a href="#">Registrarse</a></li>
         </ul>
     </div>
 </nav>

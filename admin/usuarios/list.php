@@ -1,7 +1,7 @@
 <?php
-include '../../includes/auth.php'; // Incluir la lógica de autenticación
-redirectIfNotAdmin(); // Redirigir si no es administrador
-include '../../includes/conexion.php'; // Incluir la conexión a la base de datos
+// Usar rutas absolutas para incluir los archivos
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/auth.php'; // Ruta absoluta
+include $_SERVER['DOCUMENT_ROOT'] . '/almidonadas1/includes/conexion.php'; // Ruta absoluta
 
 // Obtener todos los usuarios
 $stmt = $conn->query("SELECT * FROM Usuarios");
@@ -17,7 +17,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
-    <?php include '../../templates/header.php'; ?>
     <div class="container">
         <h1>Lista de Usuarios</h1>
         <a href="add.php" class="btn">Añadir Usuario</a>
@@ -47,6 +46,5 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
     </div>
-    <?php include '../../templates/footer.php'; ?>
 </body>
 </html>
